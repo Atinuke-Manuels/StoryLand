@@ -100,6 +100,11 @@ class _DesktopTabletWelcomeScreenState extends State<DesktopTabletWelcomeScreen>
                     ),
                     SizedBox(height: 20),
                     ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStateProperty.all<Color>(Color(0xFFD66F23)),
+                        elevation: WidgetStateProperty.all<double>(4), // Adjust the elevation as needed
+                        shadowColor: WidgetStateProperty.all<Color>(Colors.black), // Optional: Specify the shadow color
+                      ),
                       onPressed: () {
                         if (selectedAge != null) {
                           Navigator.push(
@@ -112,7 +117,7 @@ class _DesktopTabletWelcomeScreenState extends State<DesktopTabletWelcomeScreen>
                           DialogUtils.showErrorDialog(context, 'Seems you forgot to select your age!!! 🎂');
                         }
                       },
-                      child: Text("Choose a category"),
+                      child: Text("Choose a category",  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                     ),
 
                   ],

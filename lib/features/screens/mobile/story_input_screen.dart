@@ -38,6 +38,11 @@ class StoryInputScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: WidgetStateProperty.all<Color>(Color(0xFFD66F23)),
+                elevation: WidgetStateProperty.all<double>(4),
+                shadowColor: WidgetStateProperty.all<Color>(Colors.black),
+              ),
                 onPressed: () async {
                   String name = nameController.text;
                   String animal = animalController.text;
@@ -61,7 +66,7 @@ class StoryInputScreen extends StatelessWidget {
                     );
                   }
                 },
-              child: Text('Generate Story'),
+              child: Text('Generate Story' ,style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
             ),
             SizedBox(height: 20),
             Consumer<StoryProvider>(
