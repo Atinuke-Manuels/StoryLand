@@ -101,9 +101,10 @@ class _DesktopTabletWelcomeScreenState extends State<DesktopTabletWelcomeScreen>
                     SizedBox(height: 20),
                     ElevatedButton(
                       style: ButtonStyle(
+                        padding: WidgetStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.all(16.0)),
                         backgroundColor: WidgetStateProperty.all<Color>(Color(0xFFD66F23)),
-                        elevation: WidgetStateProperty.all<double>(4), // Adjust the elevation as needed
-                        shadowColor: WidgetStateProperty.all<Color>(Colors.black), // Optional: Specify the shadow color
+                        elevation: WidgetStateProperty.all<double>(4),
+                        shadowColor: WidgetStateProperty.all<Color>(Colors.black),
                       ),
                       onPressed: () {
                         if (selectedAge != null) {
@@ -117,7 +118,7 @@ class _DesktopTabletWelcomeScreenState extends State<DesktopTabletWelcomeScreen>
                           DialogUtils.showErrorDialog(context, 'Seems you forgot to select your age!!! 🎂');
                         }
                       },
-                      child: Text("Choose a category",  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                      child: Text("Choose a category",  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),),
                     ),
 
                   ],

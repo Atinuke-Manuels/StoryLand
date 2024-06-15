@@ -9,11 +9,9 @@ class StoryProvider with ChangeNotifier {
   bool get isLoading => _isLoading;
   String? get story => _story;
 
-  Future<void> fetchStory(int selectedAge, String name, String animal) async {
+  Future<void> fetchStory(int selectedAge, String name, String keyword, String category) async {
     _isLoading = true;
     notifyListeners();
-
-    // Use your API key directly here for testing
 
     final apiKey = dotenv.env['API_KEY'] ?? '';
 
@@ -21,12 +19,12 @@ class StoryProvider with ChangeNotifier {
 
     int ageGroup = selectedAge;
     String instruction = selectedAge < 7
-        ? 'less than 200 words with age appropriate language and themes.'
-        : 'about 250 words with age appropriate language and themes.';
+        ? 'less than 250 words with age appropriate language and themes.'
+        : 'about 300 words with age appropriate language and themes.';
 
     final content = [
       Content.text(
-          'Write a story about a $animal for $name using children friendly and simple English that is suitable for $ageGroup. The story should be $instruction Remember to conclude by mentioning $name and one lesson to be learnt from the story')
+          'Write a story from the $category category for $name about a $keyword using children-friendly and simple English that is suitable for $ageGroup. The story should be $instruction Remember to conclude by mentioning $name and one lesson to be learnt from the story this should be in line with the $category the story was drawn from. Lastly there should be a section called Questions where you ask $name two brief questions from the story.')
     ];
 
     try {
