@@ -7,10 +7,12 @@ class DesktopTabletWelcomeScreen extends StatefulWidget {
   const DesktopTabletWelcomeScreen({super.key});
 
   @override
-  State<DesktopTabletWelcomeScreen> createState() => _DesktopTabletWelcomeScreenState();
+  State<DesktopTabletWelcomeScreen> createState() =>
+      _DesktopTabletWelcomeScreenState();
 }
 
-class _DesktopTabletWelcomeScreenState extends State<DesktopTabletWelcomeScreen> {
+class _DesktopTabletWelcomeScreenState
+    extends State<DesktopTabletWelcomeScreen> {
   int? selectedAge;
 
   @override
@@ -24,12 +26,7 @@ class _DesktopTabletWelcomeScreenState extends State<DesktopTabletWelcomeScreen>
                 gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: [
-                      Colors.pinkAccent,
-                      Colors.blue
-                    ]
-                )
-            ),
+                    colors: [Colors.pinkAccent, Colors.blue])),
           ),
           // Main content
           Center(
@@ -50,21 +47,26 @@ class _DesktopTabletWelcomeScreenState extends State<DesktopTabletWelcomeScreen>
                         fit: BoxFit.cover,
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Text(
                       "Welcome to story land",
                       style: TextStyle(
                         fontSize: 46,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white, // Ensure the text is readable on the background
+                        color: Colors
+                            .white, // Ensure the text is readable on the background
                       ),
                     ),
                     Text(
                       "where you get to create amazing stories",
                       style: TextStyle(
                         fontSize: 22,
-                        fontWeight: FontWeight.lerp(FontWeight.w200, FontWeight.bold, 20),
-                        color: Colors.white, // Ensure the text is readable on the background
+                        fontWeight: FontWeight.lerp(
+                            FontWeight.w200, FontWeight.bold, 20),
+                        color: Colors
+                            .white, // Ensure the text is readable on the background
                       ),
                     ),
                     SizedBox(height: 30),
@@ -72,55 +74,80 @@ class _DesktopTabletWelcomeScreenState extends State<DesktopTabletWelcomeScreen>
                       "How old are you?",
                       style: TextStyle(
                         fontSize: 28,
-                        color: Colors.white, // Ensure the text is readable on the background
+                        color: Colors
+                            .white, // Ensure the text is readable on the background
                       ),
                     ),
                     SizedBox(height: 10),
-                    DropdownButton<int>(
-                      value: selectedAge,
-                      onChanged: (int? newValue) {
-                        setState(() {
-                          selectedAge = newValue;
-                        });
-                      },
-                      items: List<DropdownMenuItem<int>>.generate(
-                        16,
+                    DropdownButtonHideUnderline(
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: DropdownButton<int>(
+                          value: selectedAge,
+                          onChanged: (int? newValue) {
+                            setState(() {
+                              selectedAge = newValue;
+                            });
+                          },
+                          items: List<DropdownMenuItem<int>>.generate(
+                            16,
                             (int index) => DropdownMenuItem<int>(
-                          value: index,
-                          child: Text(index.toString(),
-                            style: TextStyle( fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.center,
+                              value: index,
+                              child: Text(
+                                index.toString(),
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
                           ),
+                          hint: Text('Select your age',
+                              style: TextStyle(color: Colors.brown)),
+                          // Ensure the hint text is readable
+                          dropdownColor: Colors.white,
+                          // Dropdown background color
+                          icon:
+                              Icon(Icons.arrow_drop_down, color: Colors.brown),
+                          itemHeight: 50,
                         ),
                       ),
-                      hint: Text('Select your age', style: TextStyle(color: Colors.white)), // Ensure the hint text is readable
-                      dropdownColor: Colors.white, // Dropdown background color
-                      icon: Icon(Icons.arrow_drop_down, color: Colors.white),
-                      itemHeight: 50,
                     ),
                     SizedBox(height: 20),
                     ElevatedButton(
                       style: ButtonStyle(
-                        padding: WidgetStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.all(16.0)),
-                        backgroundColor: WidgetStateProperty.all<Color>(Color(0xFFD66F23)),
+                        padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
+                            EdgeInsets.all(16.0)),
+                        backgroundColor:
+                            WidgetStateProperty.all<Color>(Color(0xFFD66F23)),
                         elevation: WidgetStateProperty.all<double>(4),
-                        shadowColor: WidgetStateProperty.all<Color>(Colors.black),
+                        shadowColor:
+                            WidgetStateProperty.all<Color>(Colors.black),
                       ),
                       onPressed: () {
                         if (selectedAge != null) {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => StoryInputScreen(selectedAge: selectedAge!),
+                              builder: (context) =>
+                                  StoryInputScreen(selectedAge: selectedAge!),
                             ),
                           );
                         } else {
-                          DialogUtils.showErrorDialog(context, 'Seems you forgot to select your age!!! 🎂');
+                          DialogUtils.showErrorDialog(context,
+                              'Seems you forgot to select your age!!! 🎂');
                         }
                       },
-                      child: Text("Choose a category",  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),),
+                      child: Text(
+                        "Choose a category",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22),
+                      ),
                     ),
-
                   ],
                 ),
               ),

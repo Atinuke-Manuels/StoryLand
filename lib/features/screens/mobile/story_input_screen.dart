@@ -20,10 +20,11 @@ class _StoryInputScreenState extends State<StoryInputScreen> {
   String? selectedCategory;
   final List<String> categories = [
     '🐾 Animals',
-    '🌸 Plants',
-    '🌍 African Folklore',
     '🌙 Bedtime',
     '📖 Bible Story'
+    '🌸 Plants',
+    '🌍 African Folklore',
+    '📚 African History',
   ];
   String? nameError;
   String? keywordError;
@@ -56,11 +57,11 @@ class _StoryInputScreenState extends State<StoryInputScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  TextField(
+                  TextFormField(
                     controller: nameController,
                     decoration: InputDecoration(
-                        labelText: 'Name',
-                        labelStyle: TextStyle(color: Colors.black),
+                        hintText: 'Name',
+                        hintStyle: TextStyle(color: Colors.black),
                         filled: true,
                         fillColor: Colors.white.withOpacity(0.7),
                         border: OutlineInputBorder(
@@ -105,11 +106,11 @@ class _StoryInputScreenState extends State<StoryInputScreen> {
                     ),
                   ),
                   SizedBox(height: 20),
-                  TextField(
+                  TextFormField(
                     controller: keywordController,
                     decoration: InputDecoration(
-                        labelText: 'Keyword',
-                        labelStyle: TextStyle(color: Colors.black),
+                        hintText: 'Keyword',
+                        hintStyle: TextStyle(color: Colors.black),
                         filled: true,
                         fillColor: Colors.white.withOpacity(0.7),
                         border: OutlineInputBorder(
@@ -121,15 +122,15 @@ class _StoryInputScreenState extends State<StoryInputScreen> {
                     style: TextStyle(color: Colors.black),
                     keyboardType: TextInputType.name,
                     inputFormatters: [
-                      WordLimitInputFormatter(2)
+                      WordLimitInputFormatter(3)
                     ], // Limit to 2 words
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFD66F23)),
-                      elevation: MaterialStateProperty.all<double>(4),
-                      shadowColor: MaterialStateProperty.all<Color>(Colors.black),
+                      backgroundColor: WidgetStateProperty.all<Color>(Color(0xFFD66F23)),
+                      elevation: WidgetStateProperty.all<double>(4),
+                      shadowColor: WidgetStateProperty.all<Color>(Colors.black),
                     ),
                     onPressed: () async {
                       String name = nameController.text;

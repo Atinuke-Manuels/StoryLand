@@ -76,27 +76,36 @@ class _MobileWelcomeScreenState extends State<MobileWelcomeScreen> {
                       ),
                     ),
                     SizedBox(height: 10),
-                    DropdownButton<int>(
-                      value: selectedAge,
-                      onChanged: (int? newValue) {
-                        setState(() {
-                          selectedAge = newValue;
-                        });
-                      },
-                      items: List<DropdownMenuItem<int>>.generate(
-                        16,
-                            (int index) => DropdownMenuItem<int>(
-                          value: index,
-                          child: Text(index.toString(),
-                              style: TextStyle( fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.center,
+                    DropdownButtonHideUnderline(
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: DropdownButton<int>(
+                          value: selectedAge,
+                          onChanged: (int? newValue) {
+                            setState(() {
+                              selectedAge = newValue;
+                            });
+                          },
+                          items: List<DropdownMenuItem<int>>.generate(
+                            16,
+                                (int index) => DropdownMenuItem<int>(
+                              value: index,
+                              child: Text(index.toString(),
+                                  style: TextStyle( fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
                           ),
+                          hint: Text('Select your age', style: TextStyle(color: Colors.brown)), // Ensure the hint text is readable
+                          dropdownColor: Colors.white, // Dropdown background color
+                          icon: Icon(Icons.arrow_drop_down, color: Colors.brown),
+                          itemHeight: 50,
                         ),
                       ),
-                      hint: Text('Select your age', style: TextStyle(color: Colors.white)), // Ensure the hint text is readable
-                      dropdownColor: Colors.white, // Dropdown background color
-                      icon: Icon(Icons.arrow_drop_down, color: Colors.white),
-                      itemHeight: 50,
                     ),
                     SizedBox(height: 20),
                     ElevatedButton(

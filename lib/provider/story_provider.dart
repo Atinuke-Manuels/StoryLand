@@ -24,7 +24,7 @@ class StoryProvider with ChangeNotifier {
 
     final content = [
       Content.text(
-          'Write a story from the $category category for $name about a $keyword using children-friendly and simple English that is suitable for $ageGroup. The story should be $instruction Remember to conclude by mentioning $name and one lesson to be learnt from the story this should be in line with the $category the story was drawn from. Lastly there should be a section called Questions where you ask $name two brief questions from the story.')
+          'Write a story from the $category category for $name about a $keyword using children-friendly and simple English that is suitable for $ageGroup. The story should be $instruction Remember to conclude by mentioning $name and one lesson to be learnt from the story this should be in line with the $category the story was drawn from. Lastly there should be a section called Questions where you ask $name two brief questions from the story. Remember to give the story a suitable title')
     ];
 
     try {
